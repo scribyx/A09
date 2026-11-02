@@ -24,7 +24,7 @@ body {
     border: 2px solid var(--accent-color);
 }
 
-/* Updated Default Spacing */
+/* Default Spacing */
 h1, h2, h3, p, ul {
     padding: 0.25em 0;
 }
@@ -80,7 +80,7 @@ header h3 {
     padding-bottom: 1em;
 }
 
-/* Nav Bar */
+/* Nav Bar + Submenu */
 .navbar {
     background-color: var(--accent-color);
 }
@@ -96,9 +96,17 @@ header h3 {
     flex-wrap: wrap;
 }
 
-.menu li {
+.menu > li {
     flex-basis: 20%;
     text-align: center;
+}
+
+.menu > li:has(.submenu) {
+    position: relative;
+}
+
+.menu > li:has(.submenu):hover .submenu {
+    display: block;
 }
 
 .navbar a {
@@ -119,12 +127,44 @@ header h3 {
     color: var(--menu-dark);
 }
 
+.menu small {
+    margin-left: 0.5em;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: var(--accent-color);
+    z-index: 10;
+}
+
+.submenu li a {
+    color: var(--menu-light);
+    margin: 0 2px 2px;
+}
+
+.submenu li a:hover,
+.submenu li a:focus {
+    background-color: var(--menu-mid);
+    color: var(--menu-dark);
+}
+
+.menu > li:first-child a {
+    margin-left: 0;
+}
+
+.menu > li:last-child a {
+    margin-right: 0;
+}
+
 /* 75 */
 .large {
     font-size: 125%;
 }
 
-/* Flexbox Layout */
+/* Flexbox */
 main {
     display: flex;
     clear: left;
@@ -141,7 +181,7 @@ section {
     padding-left: 1em;
 }
 
-/* Guest Speaker Images */
+/* Guest Speaker */
 aside img {
     width: 100%;
     min-width: 40px;
@@ -151,7 +191,7 @@ aside img {
     margin-bottom: 1em;
 }
 
-/* Speaker Article Styles */
+/* Speaker Article */
 article.featured {
     border-top: 2px solid var(--accent-color);
     border-bottom: 2px solid var(--accent-color);
